@@ -1,14 +1,11 @@
 import { Module } from '@nestjs/common';
-import { StudentController } from './student.controller';
-import { TeacherController } from './teacher.controller';
-import { AppService } from './app.service';
-import { AppRepo } from './app.repo';
-import { IAppRepo } from './app.repoAbstract';
+import { controllers } from './controllers';
 import { TypeormModule } from './typeorm';
+import { StudentModule } from './libs/student';
+import { TeacherModule } from './libs/teacher';
 
 @Module({
-  imports: [TypeormModule],
-  controllers: [StudentController, TeacherController],
-  providers: [AppService, { provide: IAppRepo, useClass: AppRepo }],
+  imports: [TypeormModule, StudentModule, TeacherModule],
+  controllers: [...controllers],
 })
 export class AppModule {}

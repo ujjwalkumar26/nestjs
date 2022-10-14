@@ -1,16 +1,16 @@
 import { Controller, Post, Get, Logger, Body } from '@nestjs/common';
-import { AppService } from './app.service';
-import { UpdateStudentDto } from './dtos';
-import { Student } from './libs/student';
-import { NameValidator } from './libs/common';
+import { StudentService } from '../libs/student';
+import { UpdateStudentDto } from '../dtos';
+import { Student } from '../libs/student';
+import { NameValidator } from '../libs/common';
 
 @Controller('/student')
 export class StudentController {
   private _logger = new Logger('AppControllerLogger');
-  private _appService: AppService;
+  private _studentService: StudentService;
   private _nameValidator: NameValidator;
-  public constructor(appService: AppService) {
-    this._appService = appService;
+  public constructor(studentService: StudentService) {
+    this._studentService = studentService;
     this._nameValidator = new NameValidator();
   }
 
@@ -30,7 +30,7 @@ export class StudentController {
       this._logger.warn(`Changed student name to: ${updateStudent.name}`);
     }
     const student = this._convertDtoToModel(updateStudent);
-    return this._appService.saveStudent(student);
+    return this._studentService.saveStudent(student);
   }
 
   private _convertDtoToModel(updateStudent: UpdateStudentDto): Student {

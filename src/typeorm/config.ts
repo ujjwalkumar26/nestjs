@@ -1,9 +1,8 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
+import { studentEntities } from '../libs/student';
+import { teacherEntities } from '../libs/teacher';
 dotenv.config();
-
-const entities: any = [];
-
 class ConfigService {
   private env: { [k: string]: string | undefined };
   constructor(env: { [k: string]: string | undefined }) {
@@ -40,7 +39,7 @@ class ConfigService {
       username: this.getValue('POSTGRES_USER'),
       password: this.getValue('POSTGRES_PASSWORD'),
       database: this.getValue('POSTGRES_DATABASE'),
-      entities: ['**/*.entity{.ts,.js}', ...entities],
+      entities: [...studentEntities, ...teacherEntities],
       ssl: this.isProduction(),
     };
   }
