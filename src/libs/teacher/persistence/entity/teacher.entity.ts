@@ -8,6 +8,6 @@ export class TeacherEntity {
   @Column('character varying', { name: 'Name', length: 20 })
   public name: string;
 
-  @Column('character varying', { name: 'Name', length: 20 })
+  @Column('character varying', { name: 'Subject', length: 20 })
   public subject: string;
 }
