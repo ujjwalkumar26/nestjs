@@ -1,5 +1,5 @@
 import { Controller, Post, Get, Logger, Body } from '@nestjs/common';
-import { TeacherService } from 'src/libs/teacher';
+import { TeacherService } from '../libs/teacher';
 import { UpdateTeacherDto } from '../dtos/updateTeacher.dto';
 import { Teacher } from '../libs/teacher';
 import { NameValidator } from '../libs/common';

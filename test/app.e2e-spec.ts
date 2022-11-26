@@ -15,10 +15,18 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it('App should be defined', () => {
+    expect(app).toBeDefined();
+  });
+
+  it('App running test', () => {
     return request(app.getHttpServer())
-      .get('/')
+      .get('/student/health')
       .expect(200)
-      .expect('Hello World!');
+      .expect('Controller running...');
+  });
+
+  afterEach(async () => {
+    await app.close();
   });
 });
