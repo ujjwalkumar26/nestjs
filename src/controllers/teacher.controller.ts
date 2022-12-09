@@ -1,9 +1,11 @@
-import { Controller, Post, Get, Logger, Body } from '@nestjs/common';
+import { Controller, Post, Logger, Body, UseGuards } from '@nestjs/common';
 import { TeacherService } from '../libs/teacher';
 import { UpdateTeacherDto } from '../dtos/updateTeacher.dto';
 import { Teacher } from '../libs/teacher';
 import { NameValidator } from '../libs/common';
+import { HeaderApiKeyGuard } from 'src/libs/auth';
 
+@UseGuards(HeaderApiKeyGuard)
 @Controller('/teacher')
 export class TeacherController {
   private _logger = new Logger('TeacherController');
@@ -12,12 +14,6 @@ export class TeacherController {
   public constructor(teacherService: TeacherService) {
     this._teacherService = teacherService;
     this._nameValidator = new NameValidator();
-  }
-
-  @Get('/health')
-  public getHealth(): string {
-    this._logger.log('Received health request');
-    return 'Controller running...';
   }
 
   @Post('/update')

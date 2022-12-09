@@ -45,7 +45,7 @@ class ConfigService {
   }
 }
 
-const configService = new ConfigService(process.env).ensureValues([
+const typeOrmConfigService = new ConfigService(process.env).ensureValues([
   'POSTGRES_HOST',
   'POSTGRES_PORT',
   'POSTGRES_USER',
@@ -53,4 +53,4 @@ const configService = new ConfigService(process.env).ensureValues([
   'POSTGRES_DATABASE',
 ]);
 
-export { configService };
+export { typeOrmConfigService };
