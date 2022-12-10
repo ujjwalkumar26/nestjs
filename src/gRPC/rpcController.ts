@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { Logger } from '@nestjs/common/services';
 import { GrpcMethod } from '@nestjs/microservices';
-import { TeacherService, StudentService } from 'src/libs';
+
 import {
   StudentRequest,
   StudentResponse,
@@ -9,6 +9,7 @@ import {
   TeacherResponse,
 } from './types';
 
+// Incorrect Implementation here, should be used as an Individual app with its own services
 @Controller()
 export class RPCController {
   private _logger: Logger = new Logger('RPCControllerLogger');
