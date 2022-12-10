@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package main;
+
+
+message TeacherRequest {
+    int32 id = 1;
+}
+
+message StudentRequest {
+    int32 id = 1;
+}
+
+
+message StudentResponse {
+    int32 id = 1;
+    string name = 2;
+    int32 age = 3;
+}
+
+
+message TeacherResponse {
+    int32 id = 1;
+    string name = 2;
+    string subject = 3;
+}
+
+
+
+service StudentService {
+    rpc GetStudent(StudentRequest) returns (StudentResponse) {}
+}
+
+service TeacherService {
+    rpc GetTeacher(TeacherRequest) returns (TeacherResponse) {}
+}

@@ -17,4 +17,10 @@ export class TeacherRepository extends ITeacherRepository {
     entity.subject = teacher.subject;
     await this._manager.getRepository(TeacherEntity).save(entity);
   }
+
+  public async getTeacherById(id: number): Promise<TeacherEntity> {
+    return this._manager.getRepository(TeacherEntity).findOne({
+      where: { id },
+    });
+  }
 }
