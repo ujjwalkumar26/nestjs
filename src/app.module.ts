@@ -5,9 +5,13 @@ import { StudentModule } from './libs/student';
 import { TeacherModule } from './libs/teacher';
 import { AuthModule } from './libs/auth';
 import { ConfigurationModule } from './config';
+import { DevtoolsModule } from '@nestjs/devtools-integration';
 
 @Module({
   imports: [
+    DevtoolsModule.register({
+      http: process.env.MODE !== 'PRODUCTION',
+    }),
     TypeormModule,
     StudentModule,
     TeacherModule,
