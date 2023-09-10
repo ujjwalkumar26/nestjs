@@ -1,4 +1,4 @@
-export interface IPublishedMessage {
-  publisher: string;
-  content: string;
+export class IPublishedMessage {
+  Publisher: string;
+  Content: string;
 }

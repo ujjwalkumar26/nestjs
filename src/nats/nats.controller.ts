@@ -1,4 +1,8 @@
-import { Controller } from '@nestjs/common';
+import {
+  ClassSerializerInterceptor,
+  Controller,
+  UseInterceptors,
+} from '@nestjs/common';
 import { Logger } from '@nestjs/common/services';
 import {
   Payload,
@@ -13,6 +17,7 @@ import { IPublishedMessage } from 'src/dtos';
 export class NatsController {
   private _logger: Logger = new Logger(NatsController.name);
 
+  @UseInterceptors(ClassSerializerInterceptor)
   @MessagePattern('subject.*') // wildcard
   getNotifications(
     @Payload() data: IPublishedMessage,
@@ -23,6 +28,6 @@ export class NatsController {
   }
 
   private getMessage(message: IPublishedMessage): string {
-    return `Publisher: ${message.publisher}, Content: ${message.content}`;
+    return `Publisher: ${message.Publisher}, Content: ${message.Content}`;
   }
 }
