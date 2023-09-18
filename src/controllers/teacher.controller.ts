@@ -3,7 +3,7 @@ import { TeacherService } from '../libs/teacher';
 import { UpdateTeacherDto } from '../dtos/updateTeacher.dto';
 import { Teacher } from '../libs/teacher';
 import { NameValidator } from '../libs/common';
-import { HeaderApiKeyGuard } from 'src/libs/auth';
+import { HeaderApiKeyGuard } from '../libs/auth';
 
 @UseGuards(HeaderApiKeyGuard)
 @Controller('/teacher')
